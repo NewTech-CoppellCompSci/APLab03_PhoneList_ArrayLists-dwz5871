@@ -1,5 +1,7 @@
 package phoneList;
 
+import java.text.NumberFormat;
+
 /*
  * This contains info for a single contact
  * 
@@ -20,5 +22,23 @@ package phoneList;
 
 
 public class Contact {
-
+	private String name;
+	private String number;
+	
+	public Contact(String ContactName, String ContactNumber) {
+		name = ContactName;
+		number = ContactNumber;
+	}
+	
+	public String getName() { // gets name
+		return name;
+	}
+	
+	public String getNumber() { // gets number
+		return number;
+	}
+	
+	public String toString() { // prints info
+		return name + ": " + number;
+	}
 }

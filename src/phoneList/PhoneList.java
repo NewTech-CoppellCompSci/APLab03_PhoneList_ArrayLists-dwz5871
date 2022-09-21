@@ -2,6 +2,8 @@ package phoneList;
 
 import java.util.Scanner;
 
+import java.util.ArrayList;
+
 /*
  * Phone List
  * 
@@ -25,7 +27,7 @@ import java.util.Scanner;
 
 
 public class PhoneList {
-
+	private ArrayList<Contact> internalList;
 	/*
 	 * Instance Variables
 	 */
@@ -34,11 +36,11 @@ public class PhoneList {
 	
 	//Constructor
 	public PhoneList() {
-		//initialize instance variables
+		internalList = new ArrayList<Contact>();
 	}
 	
 	
-	/*
+	/*kk
 	 * This should do the following
 	 * (whatever order you feel is best)
 	 *   - ask the user for contact's name and number
@@ -50,8 +52,21 @@ public class PhoneList {
 	 *        it's been added
 	 */
 	public void addContact() {
-		
-		
+		Scanner inKey = new Scanner(System.in);
+		System.out.println("What's this persons name?");
+		String name = inKey.next();
+		System.out.println("What's this persons number?");
+		String number = inKey.next();
+		System.out.println(name + "has been added to your constacts");
+		int i = 0;
+		while (i < internalList.size() && internalList.get(i).getName().compareTo(name) < 0) {
+			i++;
+		}
+		if (i < internalList.size()) {
+			internalList.add(i, new Contact(name, number));
+		} else {
+			internalList.add(new Contact(name, number));
+		}
 	}
 	
 	
@@ -71,7 +86,20 @@ public class PhoneList {
 	 *        
 	 */
 	public void removeContact() {
-		
+		Scanner inKey = new Scanner(System.in);
+		System.out.println("What contact do you want to remove?");
+		String name = inKey.next();
+		int i = 0;
+		while (i < internalList.size() && internalList.get(i).getName() != name) {
+			i++;
+		}
+		if (i < internalList.size()) {
+			internalList.remove(i);
+			System.out.println(name + "Has been removed from your contast");
+		} else {
+			System.out.println(name + "Has not been found from your contast");
+		}
+		//internalList.remove(Contact(name));
 		
 	}
 	
@@ -88,7 +116,7 @@ public class PhoneList {
 	 *          #################
 	 */
 	public void printList() {
-		
+		System.out.println(internalList);
 	}
 
 	
