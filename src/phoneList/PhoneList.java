@@ -57,7 +57,7 @@ public class PhoneList {
 		String name = inKey.next();
 		System.out.println("What's this persons number?");
 		String number = inKey.next();
-		System.out.println(name + "has been added to your constacts");
+		System.out.println(name + " has been added to your constacts");
 		int i = 0;
 		while (i < internalList.size() && internalList.get(i).getName().compareTo(name) < 0) {
 			i++;
@@ -90,17 +90,15 @@ public class PhoneList {
 		System.out.println("What contact do you want to remove?");
 		String name = inKey.next();
 		int i = 0;
-		while (i < internalList.size() && internalList.get(i).getName() != name) {
+		while (i < internalList.size() && !internalList.get(i).getName().equals(name)) {
 			i++;
 		}
-		if (i < internalList.size()) {
-			internalList.remove(i);
-			System.out.println(name + "Has been removed from your contast");
+		if (i >= internalList.size()) {
+			System.out.println(name + " has not been found from your contast");
 		} else {
-			System.out.println(name + "Has not been found from your contast");
-		}
-		//internalList.remove(Contact(name));
-		
+			internalList.remove(i);
+			System.out.println(name + " has been removed from your contast");
+		}		
 	}
 	
 	
